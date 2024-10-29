@@ -31,7 +31,6 @@ public class InvoiceService {
         
         if (existingInvoiceOpt.isPresent()) {
             Invoice existingInvoice = existingInvoiceOpt.get();
-            // Update the fields as needed
             existingInvoice.setCustomer(updatedInvoice.getCustomer());
             existingInvoice.setProducts(updatedInvoice.getProducts());
             existingInvoice.setPaymentName(updatedInvoice.getPaymentName());
@@ -43,13 +42,11 @@ public class InvoiceService {
             existingInvoice.setTermDueDate(updatedInvoice.getTermDueDate());
             return invoiceRepository.save(existingInvoice);
         } else {
-            // Handle the case where the invoice does not exist (could throw an exception or return null)
-            return null; // Or throw a custom exception
+            return null; // Or throw a custom exception if desired
         }
     }
 
     public void deleteInvoice(String invoiceId) {
         invoiceRepository.deleteById(invoiceId);
     }
-
 }
